@@ -1,2 +1,2 @@
 # telegram-horoscope-bot
-a telegram bot that send horoscopes
+a telegram bot that sends horoscopes
