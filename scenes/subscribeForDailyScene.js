@@ -1,7 +1,6 @@
 const { session, Scenes: { BaseScene } } = require('telegraf');
 const cron = require('node-schedule');
 let rule = new cron.RecurrenceRule();
-rule.tz = 'Europe/Kiev';
 const { verifyDate } = require('../utils/dateVerifier');
 const { cancelKey, mainMenuKeyboard } = require('../utils/keyboards');
 
@@ -17,11 +16,11 @@ const cancelJob = (jobId) => {
 subscribeForDailyScene.enter((ctx) => {
     if (ctx.scene.state.type === 'unSub') {
         cancelJob('DAILY_SUB');
-
+        
         ctx.session.isSubscribed = false;
-
+        
         ctx.reply('💔 Вы успешно отменили подписку на ежедневный гороскоп');
-
+        
         return ctx.scene.enter('subscriptionScene');
     } else {
         if (ctx.scene.state.type === 'editDate'); {
@@ -38,14 +37,19 @@ subscribeForDailyScene.hears('❌ Отменить', async (ctx) => {
 
 subscribeForDailyScene.on('text', ctx => {
     let msg = ctx.message.text;
-
+    
     if (verifyDate(msg)) {
         ctx.session.isSubscribed = true;
+        
+        rule.tz = 'Europe/Kiev';
+        rule.second = 0;
+        rule.minute = +(msg[3] + msg[4]);
+        rule.hour = +(msg[0] + msg[1]);
 
-        cron.scheduledJobs['DAILY_SUB'] = cron.scheduleJob(/*'DAILY_SUB', */'0 ' + msg[3] + msg[4] + ' ' + msg[0] + msg[1] + ' * * *', rule, async () => {
+        cron.scheduledJobs['DAILY_SUB'] = cron.scheduleJob(rule, async () => {
             return ctx.scene.enter('getHoroscopeScene', { date: 'today' });
         });
-
+        
         ctx.reply('хорошо, в ' + msg + ' я отправлю тебе гороскоп на день', mainMenuKeyboard());
 
         return ctx.scene.leave();
