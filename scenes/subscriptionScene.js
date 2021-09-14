@@ -20,5 +20,10 @@ subscriptionScene.hears('🕗 Изменить время', ctx => {
     ctx.scene.enter('subscribeForDailyScene', { type: 'editDate' })
 });
 
+subscriptionScene.hears('⬅️ Назад', ctx => {
+    ctx.reply('🏠 Главное меню', mainMenuKeyboard());
+    ctx.scene.leave();
+});
+
 module.exports.subscriptionScene = subscriptionScene;
 

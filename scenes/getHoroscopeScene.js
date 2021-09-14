@@ -16,8 +16,8 @@ let horoscopeTxt = '';
 
 getHoroscopeScene.enter(async (ctx) => {
     let date = (ctx.scene.state.date === 'today' ? 'сегодня' : 'завтра') + ':\n';
-    horoscopeTxt = horoscopePredictions[ctx.session.signUrl][ctx.scene.state.date];
-    ctx.reply(ctx.session.sign[0] + ' твой гороскоп на ' + date + horoscopeTxt, mainMenuKeyboard());
+    horoscopeTxt = horoscopePredictions[ctx.session?.signUrl][ctx.scene.state.date];
+    ctx.reply(ctx.session?.sign[0] + ' твой гороскоп на ' + date + horoscopeTxt, mainMenuKeyboard());
     return ctx.scene.leave();
 });
 

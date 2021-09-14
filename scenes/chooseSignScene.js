@@ -10,7 +10,7 @@ chooseSignScene.enter(ctx => {
 chooseSignScene.on('text', ctx => {
     let msg = ctx.message.text;
 
-    for (i in signsList) {
+        for (i in signsList) {
         if (msg === signsList[i]) {
             ctx.session ??= {};
             ctx.session.sign = msg;
@@ -20,7 +20,7 @@ chooseSignScene.on('text', ctx => {
         }
     }
 
-    return ctx.reply('ты что то не то написал, попробуй ещё раз');
+    return ctx.reply('ты что то не то написал, попробуй ещё раз', horoscopeSignsKeyboard());
 });
 
 chooseSignScene.leave(ctx => {
