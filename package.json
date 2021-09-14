@@ -15,5 +15,9 @@
     "node-schedule": "^2.0.0",
     "puppeteer": "^10.2.0",
     "telegraf": "^4.4.1"
+  },
+  "engines": {
+    "node": "16.6.2",
+    "npm": "7.20.3"
   }
 }
