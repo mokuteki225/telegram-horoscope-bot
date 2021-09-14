@@ -1,9 +1,9 @@
 const { session, Scenes: { BaseScene } } = require('telegraf');
 const cron = require('node-schedule');
 let rule = new cron.RecurrenceRule();
-rule.tz = 'Europe/Kiev'; 
-const { verifyDate } = require('../dateVerifier');
-const { cancelKey, mainMenuKeyboard } = require('../keyboards');
+rule.tz = 'Europe/Kiev';
+const { verifyDate } = require('../utils/dateVerifier');
+const { cancelKey, mainMenuKeyboard } = require('../utils/keyboards');
 
 const subscribeForDailyScene = new BaseScene('subscribeForDailyScene');
 
@@ -37,7 +37,7 @@ subscribeForDailyScene.hears('❌ Отменить', async (ctx) => {
 });
 
 subscribeForDailyScene.on('text', ctx => {
-    let msg = ctx.message.text; 
+    let msg = ctx.message.text;
 
     if (verifyDate(msg)) {
         ctx.session.isSubscribed = true;

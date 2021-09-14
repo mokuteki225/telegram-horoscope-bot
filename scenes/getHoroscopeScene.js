@@ -1,7 +1,7 @@
 const fs = require('fs');
 const { session, Scenes: { BaseScene, } } = require('telegraf');
 let horoscopePredictions = require('../data/horoscopePredictions.json');
-const { mainMenuKeyboard } = require('../keyboards');
+const { mainMenuKeyboard } = require('../utils/keyboards');
 
 module.exports.syncJson = async () => {
     horoscopePredictions = {};
@@ -12,7 +12,7 @@ module.exports.syncJson = async () => {
 
 const getHoroscopeScene = new BaseScene('getHoroscopeScene');
 
-let horoscopeTxt = ''; 
+let horoscopeTxt = '';
 
 getHoroscopeScene.enter(async (ctx) => {
     let date = (ctx.scene.state.date === 'today' ? 'сегодня' : 'завтра') + ':\n';

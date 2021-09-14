@@ -1,2 +1,3 @@
-# telegram-horoscope-bot
-a telegram bot that sends horoscopes
+# Telegram Bot That Send You Horoscopes
+
+[Try it](https://t.me/djkostyabot)

@@ -1,8 +1,8 @@
 const fs = require('fs');
 const cheerio = require('cheerio');
-const signsList = require('./data/signsList.json');
-const horoscopePredictions = require('./data/horoscopePredictions.json');
-const { getPageContent } = require('./helpers/puppeteer');
+const signsList = require('../data/signsList.json');
+const horoscopePredictions = require('../data/horoscopePredictions.json');
+const { getPageContent } = require('./puppeteer');
 
 module.exports.scrapeHoroscopes = async () => {
     const date = ['today', 'tomorrow'];

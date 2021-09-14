@@ -1,7 +1,7 @@
 const { session, Markup, Scenes: { BaseScene } } = require('telegraf');
 const chooseSignScene = new BaseScene('chooseSignScene');
-const  signsList  = require('../data/signsList.json');
-const { horoscopeSignsKeyboard,  mainMenuKeyboard } = require('../keyboards');
+const signsList = require('../data/signsList.json');
+const { horoscopeSignsKeyboard, mainMenuKeyboard } = require('../utils/keyboards');
 
 chooseSignScene.enter(ctx => {
     ctx.reply('Привет, выбери свой знак зодиака', horoscopeSignsKeyboard());

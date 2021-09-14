@@ -1,5 +1,5 @@
 const { session, Markup, Scenes: { BaseScene } } = require('telegraf');
-const { mainMenuKeyboard, subscriptionMenuKeyboard } = require('../keyboards');
+const { mainMenuKeyboard, subscriptionMenuKeyboard } = require('../utils/keyboards');
 const { subscribeForDailyScene } = require('./subscribeForDailyScene');
 
 const subscriptionScene = new BaseScene('subscriptionScene');
